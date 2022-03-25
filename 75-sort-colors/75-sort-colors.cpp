@@ -7,7 +7,6 @@ public:
             else if(i==1) ones++;
             else twos++;
         }
-        cout<<zeros;
         for(int i=0; i<zeros; i++){
             nums[i] = 0;
         }
