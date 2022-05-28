@@ -7,8 +7,8 @@ public:
         while(i<j){
             h = min(height[i],height[j]);
             water = max(water, (j-i)*h);
-            while(height[i]<=h && i<j) i++;
-            while(height[j]<=h && i<j) j--;
+            if(height[i]<height[j]) i++;
+            else j--;
         }
         return water;
     }
