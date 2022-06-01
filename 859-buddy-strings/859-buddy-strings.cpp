@@ -8,7 +8,10 @@ public:
         
         vector<int> diff;
         for(int i = 0; i<s.size(); i++){
-            if(s[i]!=goal[i]) diff.push_back(i);
+            if(s[i]!=goal[i]){
+                diff.push_back(i);
+                if(diff.size()>2) return false;
+            }
         }
         
         if(diff.size()==2 && s[diff[0]]==goal[diff[1]] && s[diff[1]]==goal[diff[0]]) return true;
