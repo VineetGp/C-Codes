@@ -8,11 +8,14 @@ public:
         }
         sort(diff.begin(), diff.end());
         for(int i = 0; i<diff.size(); i++){
-            if(diff[i]>0 && additionalRocks-diff[i]>=0){
+            if(diff[i]==0) count++;
+            
+            else if(diff[i]>0 && additionalRocks-diff[i]>=0){
                 additionalRocks -= diff[i];
                 count++;
             }
-            else if(diff[i]==0) count++;
+            
+            else break;
         }
         return count;
     }
