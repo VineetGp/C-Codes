@@ -10,7 +10,7 @@ public:
         for(int i = 0; i<diff.size(); i++){
             if(diff[i]==0) count++;
             
-            else if(diff[i]>0 && additionalRocks-diff[i]>=0){
+            else if(additionalRocks-diff[i]>=0){
                 additionalRocks -= diff[i];
                 count++;
             }
