@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -15,6 +16,29 @@ public:
                 else if(matrix[r][m]<target) start = m+1;
                 else end = m-1;
             }
+        }
+        return false;
+    }
+};
+*/
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+    {
+        int n = matrix.size();
+        int m = matrix[0].size();
+        int begin = 0, end = n*m-1;
+        while(begin<=end)
+        {
+            int mid = (begin + end)/2;
+            int mid_val = matrix[mid/m][mid%m];
+            if(mid_val==target)
+                return true;
+            else if(mid_val<target)
+                begin = mid+1;
+            else
+                end = mid-1;
         }
         return false;
     }
