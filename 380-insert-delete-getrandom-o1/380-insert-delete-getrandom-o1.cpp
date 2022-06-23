@@ -1,3 +1,6 @@
+/*
+https://leetcode.com/problems/insert-delete-getrandom-o1/discuss/455253/Python-or-Super-Efficient-or-Detailed-Explanation
+*/
 class RandomizedSet {
 public:
     vector<int> a;
