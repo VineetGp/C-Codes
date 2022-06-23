@@ -1,4 +1,6 @@
 /*
+https://leetcode.com/problems/smallest-range-ii/discuss/2056065/sorting-(with-pictures)
+
 https://leetcode.com/problems/smallest-range-ii/discuss/2118698/Faster-oror-Easy-To-Understand-oror-C%2B%2B-Code
 */
 
