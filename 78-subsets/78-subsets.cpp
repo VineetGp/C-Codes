@@ -1,26 +1,21 @@
 class Solution {
 public:
-    void solve(stack<int> st, vector<vector<int>>& res, vector<int> temp){
-        if(st.empty()){
+    void solve(vector<int> in, vector<vector<int>>& res, vector<int> temp){
+        if(in.size()==0){
             res.push_back({temp});
             return;
         }
-        vector<int> op1 = temp;
-        vector<int> op2 = temp;
-        op2.push_back(st.top());
-        st.pop();
-        solve(st, res, op1);
-        solve(st, res, op2);
+        vector<int> out1 = temp;
+        out1.push_back(in[0]);
+        in.erase(in.begin()+0);
+        solve(in, res, temp);
+        solve(in, res, out1);
         return;
     }
     vector<vector<int>> subsets(vector<int>& nums) {
-        stack<int> st;
-        for(int i = nums.size()-1; i>=0; i--){
-            st.push(nums[i]);
-        }
         vector<int> temp;
         vector<vector<int>> res;
-        solve(st, res, temp);
+        solve(nums, res, temp);
         return res;
     }
 };
