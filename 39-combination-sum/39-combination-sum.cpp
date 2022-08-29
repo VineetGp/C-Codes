@@ -1,31 +1,27 @@
 class Solution {
 public:
-    vector<vector<int>> ans;
-    void solve(vector<int> &arr, int sum, int i, vector<int>op, int target){
-        if(i>=arr.size()) return;
-        if(sum + arr[i] == target){
-            op.push_back(arr[i]);
-            ans.push_back(op);
+    void func(int index, int target, vector<int> arr, vector<vector<int>> &res, vector<int> dummy){
+        if(index == arr.size()){
+            if(target == 0){
+                res.push_back(dummy);
+            }
             return;
         }
-        if(sum + arr[i] < target){
-            vector<int> op1 = op;
-            vector<int> op2 = op;
-            op1.push_back(arr[i]);
-            solve(arr, sum+arr[i], i, op1, target);
-            solve(arr, sum, i+1, op2, target);
+
+        if(arr[index] <= target){
+            dummy.push_back(arr[index]);
+            func(index, target-arr[index], arr, res, dummy);
+            dummy.pop_back();
         }
-        else{
-            solve(arr, sum, i+1, op, target);
-        }
+        func(index+1, target, arr, res, dummy);
+        return;
     }
+    
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        ans.clear();
-        vector<int> op;
-        int i = 0; 
-        int sum = 0;
-        sort(candidates.begin(), candidates.end());
-        solve(candidates, 0, 0, op, target);
-        return ans;
+        vector<vector<int>> res;
+        vector<int> dummy;
+        func(0, target, candidates, res, dummy);
+        return res;
+        
     }
 };
