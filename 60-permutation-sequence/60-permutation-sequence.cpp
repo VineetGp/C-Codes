@@ -9,11 +9,18 @@ public:
             i--;
         }
         int j = i+1;
-        sort(arr.begin()+j, arr.end());
-        while(arr[j] < arr[i] && j < n){
+        int a = INT_MAX;
+        int k;
+        while(j < n){
+            if(arr[j]>=arr[i]){
+                a = min(a,arr[j]);
+                k = j;
+            }
             j++;
         }
-        swap(arr[i], arr[j]);
+        swap(arr[i], arr[k]);
+        reverse(arr.begin()+i+1, arr.end());
+
         return;
     }
     string getPermutation(int n, int k) {
