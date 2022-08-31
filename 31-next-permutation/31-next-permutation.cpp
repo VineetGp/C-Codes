@@ -11,17 +11,15 @@ public:
             reverse(nums.begin(), nums.end());
             return;
         }
-        int j = i+1;
+        int j = n-1;
         int mini = INT_MAX;
-        int index;
-        while(j < n){
+        while(j > i){
             if(nums[j] > nums[i]){
-                mini = min(mini, nums[j]);
-                index = j;
+                break;
             }
-            j++;
+            j--;
         }
-        swap(nums[i], nums[index]);
+        swap(nums[i], nums[j]);
         reverse(nums.begin()+i+1, nums.end());
         return;
     }
