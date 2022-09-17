@@ -6,12 +6,16 @@ public:
         for (int i = 0; i < n; i++) {
             sum += nums[i];
         }
+        // for case [1] , 2
         if (target > sum || target < (-sum)) return 0;
         int s1 = (sum + target) / 2;
         int s2 = s1 - target;
         if (s1 + s2 < sum) return 0;
 
         int dp[n + 1][s1 + 1];
+        // We have 0's also in the array, so we can;t fill the first column with 1
+        // because if array = [0,0,0,1], then if we take 3 elements then there are 
+        // more than 1 possiblity of sum 0
         dp[0][0] = 1;
         for (int j = 1; j < s1 + 1; j++) {
             dp[0][j] = 0;
