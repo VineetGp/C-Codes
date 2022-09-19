@@ -1,24 +1,23 @@
 class Solution {
 public:
-    void rotate(vector<vector<int>>& mat) {
-        // Pointers
-        int left = 0, right = mat.size()-1;
-        int top = 0, bottom = mat.size()-1;
-        int m = mat.size()-1;
-        
-        while(left<right){
-            for(int i = 0; i<m; i++){
-                int topLeft = mat[top][left+i];
-                mat[top][left+i] = mat[bottom-i][left];
-                mat[bottom-i][left] = mat[bottom][right-i];
-                mat[bottom][right-i] = mat[top+i][right]; 
-                mat[top+i][right] = topLeft;
+    void rotate(vector<vector<int>>& matrix) {
+        // First transpose the matrix and then reverse the columns
+        int r = matrix.size();
+        int c = matrix[0].size();
+        //Transpose of matrix
+        for(int i = 0; i<r; i++){
+            for(int j = i; j<c; j++){
+                swap(matrix[i][j] , matrix[j][i]);
             }
-            left++;
-            right--;
-            top++;
-            bottom--;
-            m-=2;
+        }
+        
+        for(int i = 0; i<r; i++){
+            int s = 0, e = c-1;
+            while(s<e){
+                swap(matrix[i][s], matrix[i][e]);
+                s++;
+                e--;
+            }
         }
     }
 };
