@@ -22,15 +22,12 @@ public:
             return false;
         }
         
-        // sum += root->val;
-        // solve(root->left, t, sum);
-        // sum -= root->val;
-        // solve(root->right, t, sum);
         return solve(root->left, t, sum) || solve(root->right, t, sum);
         
     }
     
     bool hasPathSum(TreeNode* root, int targetSum) {
         return solve(root, targetSum, 0);
+    
     }
 };
