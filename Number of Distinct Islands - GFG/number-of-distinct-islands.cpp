@@ -13,7 +13,6 @@ class Solution {
     bool isSafe(int x, int y, vector<vector<int>>& grid, vector<vector<int>>& vis, string& temp){
         int m = grid.size(), n = grid[0].size();
         if(x<0 || x>=m || y<0 || y>=n || vis[x][y] == 1 || grid[x][y] != 1) {
-            temp += "_";
             return false;
         }
         return true;
@@ -26,22 +25,31 @@ class Solution {
             temp.push_back('D');
             dfs(x+1, y, grid, vis, temp);
         }
+        else{
+            temp += "_";
+        }
 
         if(isSafe(x-1, y, grid, vis, temp)){
             temp.push_back('U');
             dfs(x-1, y, grid, vis, temp);
         }
-
+        else{
+            temp += "_";
+        }
         if(isSafe(x, y-1, grid, vis, temp)){
             temp.push_back('L');
             dfs(x, y-1, grid, vis, temp);
         }
-
+        else{
+            temp += "_";
+        }
         if(isSafe(x, y+1, grid, vis, temp)){
             temp.push_back('R');
             dfs(x, y+1, grid, vis, temp);
         }
-        
+        else{
+            temp += "_";
+        }        
         
     }
     int countDistinctIslands(vector<vector<int>>& grid) {
