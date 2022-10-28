@@ -17,7 +17,7 @@ class Solution {
         vector<vector<int>> dist (m, vector<int>(n, 1e9));
         int sx = source.first, sy = source.second;
         int ex = destination.first, ey = destination.second;
-        if(sx==ex && sy==ey) return 0;
+        // if(sx==ex && sy==ey) return 0;
         q.push({0,sx,sy});
         dist[sx][sy] = 0;
         int dx[4] = {-1,1,0,0};
@@ -28,12 +28,13 @@ class Solution {
             int x = it[1];
             int y = it[2];
             q.pop();
+            if(x == ex && y == ey) return dis;
             for(int i = 0; i<4; i++){
                 int nx = x + dx[i];
                 int ny = y + dy[i];
                 if(nx>=0 && nx<m && ny>=0 && ny<n && dist[nx][ny] > dis+1 && grid[nx][ny]==1){
                     dist[nx][ny] = dis+1;
-                    if(nx == ex && ny == ey) return dis+1;
+                    // if(nx == ex && ny == ey) return dis+1;
                     q.push({dis+1, nx, ny});
                 }
             }
